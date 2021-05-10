@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.zzu.dao.IAccountDao">
+    <select id="findAccountUser" resultType="accountUser">
+        select a.*,u.username,u.address from user as u , account as a where a.uid=u.id
+    </select>
+    <select id="findAccountAndUser" resultMap="accountAndusers">
+<!--由于两张表存在相同属性列，因此需要做映射； 由于account属性较少，因此account做别名-->
+        select u.* , a.id as aid , a.uid , a.money from user u , account a where a.uid = u.id
+    </select>
+    <resultMap id="accountAndusers" type="account">
+        <id property="id" column="aid"/>
+        <result property="uid" column="uid"/>
+        <result property="money" column="money"/>
+        <!--因为user在account中单一对象user所以用 association  做是List<User>则用collection
+        property  变量名称
+        column    数据库外键名称
+        javaType  java类型
+        -->
+        <association property="user" column="uid" javaType="user">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result column="birthday" property="birthday"/>
+            <result column="sex" property="sex"/>
+            <result column="address" property="address"/>
+        </association>
+    </resultMap>
+</mapper>

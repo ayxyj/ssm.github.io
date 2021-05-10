@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<!--    标签顺序：
+Cause: org.xml.sax.SAXParseException; lineNumber: 40; columnNumber: 17; 元素类型为 "configuration" 的内容必须匹配
+"(properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)"-->
+
+    <!--    加载数据库信息-->
+    <properties resource="jdbc.properties"/>
+
+    <!--使用typeAliases配置别名，它只能配置domain中类的别名 -->
+    <typeAliases>
+        <!--typeAlias用于配置别名,在xml中resulttype中的全限定类名不在要求写。
+        type属性指定的是实体类全限定类名。alias属性指定别名，当指定了别名就不再区分大小写
+        <typeAlias type="com.itheima.domain.User" alias="user"></typeAlias>-->
+        <!-- 用于指定要配置别名的包，当指定之后，该包下的实体类都会注册别名，并且类名就是别名，不再区分大小写-->
+        <package name="cn.edu.zzu.domain"></package>
+    </typeAliases>
+
+    <!--    配置数据库连接池信息-->
+    <environments default="mysql">
+    <!--    配置mysql-->
+        <environment id="mysql">
+    <!--    配置事务-->
+            <transactionManager type="JDBC"></transactionManager>
+    <!--    配置连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件 -->
+        <!-- <mapper resource="cn/edu/zzu/dao/IUserDao.xml"/>-->
+        <!-- 指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件,如果是用注解来配置的话，此处应该使用class属性指定被注解的dao全限定类名-->
+        <!-- <mapper class="cn.edu.zzu.dao.IUserDao"/>-->
+        <!-- 当使用package指定dao接口所在的包，就不需要在写mapper的resource和class了-->
+        <package name="cn.edu.zzu.dao"/>
+    </mappers>
+</configuration>

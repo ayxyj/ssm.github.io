@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--mybatis主要配置-->
+<configuration>
+<!--加载资源文件-->
+<properties resource="jdbc.property"/>
+<!--    配置环境-->
+<environments default="mysql">
+    <!--配置mysql环境-->
+    <environment id="mysql">
+        <!--配置事务得类型-->
+        <transactionManager type="JDBC"></transactionManager>
+        <!--配置数据源（连接池）-->
+        <dataSource type="POOLED">
+            <!--配置连接数据库得基本信息-->
+            <property name="driver" value="${driver}"/>
+            <property name="url" value="${url}"/>
+            <property name="username" value="${username}"/>
+            <property name="password" value="${password}"/>
+        </dataSource>
+    </environment>
+</environments>
+<!-- 指定映射配置文件得位置，映射配置文件指定得每个dao独立的配置文件
+当前使用注解方式，此时需要将resource修改为class，且值为xml文件中得mapper上得namespace得接口得全限定名
+-->
+    <mappers>
+        <mapper class="cn.edu.zzu.dao.IUserDao"/>
+    </mappers>
+</configuration>

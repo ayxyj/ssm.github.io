@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<!--    数据库配置文件-->
+    <properties resource="jdbc.properties"/>
+
+<!--    别名-->
+    <typeAliases>
+<!--        单个别名定义-->
+<!--        <typeAlias type="cn.edu.zzu.domain.User"/>-->
+<!--        批量别名定义，扫描整个包下的类，别名为类名（首字母大小写都可以）-->
+        <package name="cn.edu.zzu.domain"/>
+        <package name="cn.edu.zzu.queryvo"/>
+    </typeAliases>
+
+<!--    数据源 POOLED-->
+    <environments default="mysql">
+        <environment id="mysql">
+<!--            事物类型-->
+            <transactionManager type="JDBC"></transactionManager>
+<!--            数据库信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--    告知MyBatis的映射配置的位置-->
+    <mappers>
+<!--        <mapper resource="cn/edu/zzu/dao/IUserDao.xml"/>-->
+        <package name="cn.edu.zzu.dao"/>
+    </mappers>
+</configuration>

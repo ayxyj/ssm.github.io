@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zzu.dao.IUserDao">
+    <sql id="defaultSql" >
+        select * from user
+    </sql>
+    <select id="findUserAndAccountsID" resultMap="accounts" parameterType="Integer">
+        select a.id as aid ,a.uid,a.money from account as a where  #{uid}=a.uid
+    </select>
+    <resultMap id="accounts" type="user">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <collection property="ids_accounts" ofType="account">
+            <id property="id" column="aid"/>
+            <result property="uid" column="uid"/>
+            <result property="money" column="money"/>
+        </collection>
+    </resultMap>
+    <!--1:n-->
+    <select id="findUserAndAccounts" resultMap="UserAndAccounts">
+        select u.* , a.id as aid ,a.uid,a.money from user as u left join  account as a on u.id=a.uid
+    </select>
+    <resultMap id="UserAndAccounts" type="user">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <collection property="accounts" ofType="account">
+            <id property="id" column="aid"/>
+            <result property="uid" column="uid"/>
+            <result property="money" column="money"/>
+        </collection>
+    </resultMap>
+<!--    不要出现 ； ，否则后续语句不能接入-->
+    <select id="findUserByQueryVoIds" parameterType="queryvo" resultType="user">
+        <!--SELECT * FROM USER WHERE id IN (1,2,3)-->
+        <include refid="defaultSql"></include>
+        <where>
+            <if test="ids!=null and ids.size>0">
+                <foreach collection="ids" open="and id in(" close=")" item="uid" separator=",">
+                    #{uid}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <select id="findUserByCondition" parameterType="user" resultType="user">
+        <include refid="defaultSql"></include>
+        <where>
+            <if test="username!=null">
+                and username = #{username}
+            </if>
+            <if test="sex!=null">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+    <select id="findAll" resultType="cn.edu.zzu.domain.User" >
+        <include refid="defaultSql"></include>
+    </select>
+    <select id="findById" resultType="user" parameterType="integer">
+        <include refid="defaultSql"/>
+        <where>
+            id = #{uid}
+        </where>
+    </select>
+    <select id="findByLike" parameterType="String" resultType="user">
+        select * from user where username like  #{username}
+    </select>
+    <select id="CountUser" resultType="int">
+        select count(*) from user
+    </select>
+    <select id="findByQueryVo" parameterType="queryvo" resultType="user">
+        select * from user where username like #{user.username}
+    </select>
+    <!-- 保存用户
+        ognl 表达式：它是 apache 提供的一种表达式语言，在 struts2 中也有应用。
+        Object Graphic Navigation Language 对象图导航语言
+        它是按照一定的语法格式来获取数据的。
+        语法格式就是使用 #{对象.对象}的方式
+        #{user.username}它会先去找 user 对象，然后在 user 对象中找到 username 属性，并把值取出来
+    -->
+<!--    默认返回影响数据库条数值-->
+<!--    若想返回主键，则需要进行配置-->
+    <insert id="saveUser" parameterType="user">
+        <!-- 配置保存时获取插入的 id -->
+        <selectKey keyColumn="id" keyProperty="id" resultType="int">
+            select last_insert_id();
+        </selectKey>
+        insert into user(username,birthday,sex,address) values(#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where id = #{uid}
+    </delete>
+    <update id="updateUserById" parameterType="user">
+        update user set username=#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id=#{id}
+    </update>
+</mapper>

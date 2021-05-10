@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace值必须是接口得全限定名-->
+<mapper namespace="cn.edu.zzu.dao.IUserDao">
+    <!--M:N 用户对应得角色-->
+    <select id="findUserAndRoles" resultMap="UserAndRoles">
+        SELECT u.*,r.ID as rid,r.ROLE_NAME,r.ROLE_DESC FROM `user` u
+        LEFT OUTER JOIN user_role ur ON u.id=ur.UID
+        LEFT OUTER JOIN role r ON ur.RID=r.ID
+    </select>
+    <resultMap id="UserAndRoles" type="user">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <collection property="roles" ofType="role">
+            <id property="id" column="rid"/>
+            <result property="roleName" column="role_name"/>
+            <result property="roleDesc" column="role_desc"/>
+        </collection>
+    </resultMap>
+
+
+
+
+    <!-- 定义User的resultMap 1:n-->
+    <resultMap id="userAndAccounts" type="user">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <!--association 得 javaType和 collection 得 ofType-->
+        <collection property="accounts" ofType="account">
+            <id property="id" column="aid"/>
+            <result property="uid" column="uid"/>
+            <result property="money" column="money"/>
+        </collection>
+    </resultMap>
+    <select id="findUserAndAccounts" resultMap="userAndAccounts">
+        SELECT u.* ,a.id as aid ,a.uid, a.money FROM user u LEFT JOIN account a  ON u.id = a.uid
+    </select>
+
+
+<!-- 配置查询所有用户-->
+<!--创建文件夹cn.edu.zzu.dao应为cn/edu/zzu/dao，不然是一级目录，和java源码下得创建不一样-->
+<!-- id得值要和接口得方法名保持一致-->
+ <select id="findAll" resultType="User">
+     select * from user
+ </select>
+
+</mapper>
