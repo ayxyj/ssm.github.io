@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--    包扫描-->
+    <context:component-scan base-package="cn.edu.zzu"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+<!--业务层-->
+
+
+<!--持久化层-->
+
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype"/>
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--连接数据库的必备信息-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/maven_0512"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+
+<!--    XML方式配置切面-->
+<!--aop开启并配置-->
+    <aop:config>
+<!--        切入点-->
+        <aop:pointcut id="pt1" expression="execution(* cn.edu.zzu.service.*.*(..))"/>
+<!--        配置切面-->
+        <aop:aspect ref="transactionManager">
+            <aop:before method="beginTransaction" pointcut-ref="pt1"/>
+            <aop:after-returning method="commit" pointcut-ref="pt1"/>
+            <aop:after-throwing method="rollback" pointcut-ref="pt1"/>
+            <aop:after method="release" pointcut-ref="pt1"/>
+        </aop:aspect>
+    </aop:config>
+
+<!--    开启Spring对注解aop的支持-->
+</beans>

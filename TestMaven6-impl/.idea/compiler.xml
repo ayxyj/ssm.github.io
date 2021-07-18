@@ -9,5 +9,8 @@
         <module name="TestMaven6-impl" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TestMaven6-impl" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

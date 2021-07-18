@@ -15,8 +15,8 @@
 			    http://www.springframework.org/schema/tx/spring-tx.xsd
 			    http://www.springframework.org/schema/mvc
 			    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-<!--dao层配置文件开始-->
-<!-- 配置连接池-->
+    <!--dao层配置文件开始-->
+    <!-- 配置连接池-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql:///maven"/>
@@ -24,21 +24,21 @@
         <property name="password" value="123456"/>
     </bean>
 
-<!--配置生产sqlSession对象的工厂-->
+    <!--配置生产sqlSession对象的工厂-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--数据库连接池-->
         <property name="dataSource" ref="dataSource"/>
         <!--扫描pojo包，给包下所有的pojo对象起别名-->
         <property name="typeAliasesPackage" value="cn.edu.zzu.domain"/>
     </bean>
-<!--扫描接口包路径，生成包下所有的接口的代理对象，并放入spring容器中-->
+    <!--扫描接口包路径，生成包下所有的接口的代理对象，并放入spring容器中-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.edu.zzu.mapper"/>
     </bean>
-<!--dao层配置文件结束-->
+    <!--dao层配置文件结束-->
 
 
-<!--service层配置文件开始-->
+    <!--service层配置文件开始-->
     <!--组件扫描配置-->
     <context:component-scan base-package="cn.edu.zzu.services"/>
 
@@ -49,7 +49,7 @@
     </bean>
 
     <!--配置事物的通知-->
-    <tx:advice id ="advice">
+    <tx:advice id="advice">
         <tx:attributes>
             <!--尽量走局部扫描-->
             <tx:method name="save*" propagation="REQUIRED"/>
@@ -66,5 +66,5 @@
         <aop:pointcut id="pointcut" expression="execution(* cn.edu.zzu.services.impl.*.*(..))"/>
         <aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>
     </aop:config>
-<!--service层配置文件结束-->
+    <!--service层配置文件结束-->
 </beans>

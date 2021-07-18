@@ -1,0 +1,21 @@
+01  —— 数据库驱动加载方式：反射和new 解耦
+02  —— 工厂模式，单例模式，反射创建对象降低程序之间耦合
+03  —— spring的IOC 简单应用，初测（ClasssaPathXmlApplicationContext  FileSystemXmlApplicationContext    ApplicationContext  BeanFactory)
+04  —— spring的IOC bean创建方式和声明周期
+05  —— spring的IOC DI
+06  —— spring的IOC常用注解：Component\Controller\Service\Repository   Autowrited\Qualifier\Resource\Value    Scope  PreDestory\PostConstruct
+07  —— spring的IOCxml开发，dbutils
+08  —— spring的IOC纯注解开发，dbutils
+09  —— spring的IOC注解和xml混合开发，dbutils
+10  —— spring的AOP模拟，动态代理
+11  —— 动态代理讲解 子类和接口
+12  —— spring的AOP xml方式配置、通知类型
+13  —— spring的AOP 注解方式
+14  —— TestJdbcTemplate springJDBCTemplate使用方法同  dbutils 的 QueryRunner
+15  —— TestSpringJdbc01  编码实现事务管理 xml进行事务控制
+16  —— TestSpringJdbc02  编码实现事务管理 xml进行事务控制
+17  —— TestSpringJdbc03  编码实现事务管理 前后置最终通知 注解进行事务控制（spring底层的前后最终通知方式有问题，注解进行事务管理用环绕通知）
+18  —— TestSpringJdbc04 Spring的事务管理器 XML进行事务控制
+19  —— TestSpringJdbc05 Spring的事务管理器 注解进行事务控制
+20  —— TestSpringJdbc06 Spring的事务管理器 纯注解进行事务控制
+21  —— TestSpringJdbc06 Spring的事务管理器 编程式进行事务控制

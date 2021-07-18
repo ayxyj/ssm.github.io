@@ -1,0 +1,2 @@
+- Mybatis 延迟加载和缓存
+- Spring 纯粹xml和注解的IOC

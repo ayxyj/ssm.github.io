@@ -63,18 +63,24 @@
     <select id="findAll" resultType="cn.edu.zzu.domain.User" >
         <include refid="defaultSql"></include>
     </select>
-    <select id="findById" resultType="user" parameterType="integer">
+
+    <!--二级缓存-->
+    <cache/>
+    <select id="findById" resultType="user" parameterType="integer" useCache="true">
         <include refid="defaultSql"/>
         <where>
             id = #{uid}
         </where>
     </select>
+
     <select id="findByLike" parameterType="String" resultType="user">
         select * from user where username like  #{username}
     </select>
+
     <select id="CountUser" resultType="int">
         select count(*) from user
     </select>
+
     <select id="findByQueryVo" parameterType="queryvo" resultType="user">
         select * from user where username like #{user.username}
     </select>
@@ -87,6 +93,7 @@
     -->
 <!--    默认返回影响数据库条数值-->
 <!--    若想返回主键，则需要进行配置-->
+
     <insert id="saveUser" parameterType="user">
         <!-- 配置保存时获取插入的 id -->
         <selectKey keyColumn="id" keyProperty="id" resultType="int">

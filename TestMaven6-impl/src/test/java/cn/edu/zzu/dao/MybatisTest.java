@@ -2,12 +2,11 @@ package cn.edu.zzu.dao;
 
 import cn.edu.zzu.dao.impl.IUserDaoImpl;
 import cn.edu.zzu.domain.User;
+
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
-
 
 import java.io.InputStream;
 import java.util.List;

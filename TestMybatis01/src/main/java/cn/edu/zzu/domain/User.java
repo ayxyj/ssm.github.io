@@ -1,9 +1,10 @@
 package cn.edu.zzu.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class User {
+public class User  implements Serializable {
     private Integer id ; //主键
     private String username ; //姓名
     private Date birthday ;  //生日

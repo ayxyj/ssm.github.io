@@ -106,6 +106,11 @@ public class TestUser {
         IUserDao mapper = sqlSession.getMapper(IUserDao.class);
         User user = mapper.findById(1);
         System.out.println(user);
+        User user1 = mapper.findById(1);
+        System.out.println(user1);
+        System.out.println(user == user1);
+        User user2 = mapper.findById(2);
+        System.out.println(user2);
     }
     @Test
     public void saveuser(){

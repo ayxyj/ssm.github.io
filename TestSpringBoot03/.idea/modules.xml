@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01-TestSpringBoot_web/01-TestSpringBoot_web.iml" filepath="$PROJECT_DIR$/01-TestSpringBoot_web/01-TestSpringBoot_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-TestSpringboot_rest/02-TestSpringboot_rest.iml" filepath="$PROJECT_DIR$/02-TestSpringboot_rest/02-TestSpringboot_rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-TestSpringBoot_freemarker/03-TestSpringBoot_freemarker.iml" filepath="$PROJECT_DIR$/03-TestSpringBoot_freemarker/03-TestSpringBoot_freemarker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04-TestSpringBoot_mybatis/04-TestSpringBoot_mybatis.iml" filepath="$PROJECT_DIR$/04-TestSpringBoot_mybatis/04-TestSpringBoot_mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-TestSpringBoot_Swagger/05-TestSpringBoot_Swagger.iml" filepath="$PROJECT_DIR$/05-TestSpringBoot_Swagger/05-TestSpringBoot_Swagger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/TestSpringBoot03.iml" filepath="$PROJECT_DIR$/.idea/TestSpringBoot03.iml" />
+    </modules>
+  </component>
+</project>
