@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zzu.mapper.IUserMapper">
+    <!-- select -->
+    <select id="findAll" resultType="user">
+        select *
+        from clock.user
+    </select>
+    <select id="findUserById" parameterType="int" resultType="user">
+        select *
+        from clock.user
+        where id = #{id}
+    </select>
+    <select id="findUserByUid" parameterType="string" resultType="user">
+        select *
+        from clock.user
+        where uid = #{uid}
+    </select>
+
+    <!--insert-->
+    <insert id="insertUser" parameterType="user">
+        insert into clock.user(uid, upw, myvs_1, myvs_2, myvs_3, myvs_4, myvs_5, myvs_6, myvs_7, myvs_8, myvs_9,
+                               myvs_10, myvs_11, myvs_12, myvs_13a, myvs_13b, myvs_13c, myvs_14, record, email, send)
+        values (#{uid}, #{upw}, #{myvs_1}, #{myvs_2}, #{myvs_3},
+                #{myvs_4}, #{myvs_5}, #{myvs_6}, #{myvs_7}, #{myvs_8},
+                #{myvs_9}, #{myvs_10}, #{myvs_11}, #{myvs_12},
+                #{myvs_13a}, #{myvs_13b}, #{myvs_13c}, #{myvs_14},
+                #{record}, #{email}, #{send})
+    </insert>
+
+    <!--update-->
+    <update id="updateUser" parameterType="user">
+        update clock.user
+        set uid      = #{uid},
+            upw      = #{upw},
+            myvs_1   = #{myvs_1},
+            myvs_2   = #{myvs_2},
+            myvs_3   = #{myvs_3},
+            myvs_4   = #{myvs_4},
+            myvs_5   = #{myvs_5},
+            myvs_6   = #{myvs_6},
+            myvs_7   = #{myvs_7},
+            myvs_8   = #{myvs_8},
+            myvs_9   = #{myvs_9},
+            myvs_10  = #{myvs_10},
+            myvs_11  = #{myvs_11},
+            myvs_12  = #{myvs_12},
+            myvs_13a = #{myvs_13a},
+            myvs_13b = #{myvs_13b},
+            myvs_13c = #{myvs_13c},
+            myvs_14  = #{myvs_14},
+            record   = #{record},
+            email    = #{email},
+            send     = #{send}
+        where id = #{id}
+    </update>
+
+    <!--delete-->
+    <delete id="deleteUserById" parameterType="int">
+        delete
+        from clock.user
+        where id = #{id}
+    </delete>
+</mapper>
