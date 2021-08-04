@@ -41,7 +41,7 @@ public class DeptController {
         System.out.println("discover==>services" + services);
 
         //获取一个具体的服务实例信息
-        List<ServiceInstance> instances = discoveryClient.getInstances("SPRINGCLOUD-PROVIDER-DEPT-8001");
+        List<ServiceInstance> instances = discoveryClient.getInstances("SPRINGCLOUD-PROVIDER-DEPT");
         System.out.println("discover==>instances" + instances);
         for (ServiceInstance instance : instances) {
             System.out.println(

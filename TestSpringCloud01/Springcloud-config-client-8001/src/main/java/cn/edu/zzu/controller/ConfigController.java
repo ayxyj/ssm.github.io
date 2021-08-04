@@ -19,8 +19,8 @@ public class ConfigController {
 
     @GetMapping("/info")
     public String info(){
-        return  "  applicationName:"+applicationName+
-                "  EurekaServer:"+EurekaServer+
-                "  serverProt:"+serverProt;
+        return  "  applicationName:"+applicationName+ "<br>"+
+                "  EurekaServer:"+EurekaServer+"<br>"+
+                "  serverProt:"+serverProt+"<br>";
     }
 }

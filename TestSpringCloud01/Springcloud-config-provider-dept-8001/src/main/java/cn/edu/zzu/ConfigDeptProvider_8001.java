@@ -10,6 +10,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @EnableDiscoveryClient//默认服务发现开启，不需要手动开启
 public class ConfigDeptProvider_8001{
     public static void main(String[] args) {
-        SpringApplication.run(ConfigDeptProvider_8001.class ,args);
+        SpringApplication.run(ConfigDeptProvider_8001/**/.class ,args);
     }
 }

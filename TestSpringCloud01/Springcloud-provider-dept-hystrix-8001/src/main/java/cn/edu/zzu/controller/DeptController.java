@@ -22,6 +22,11 @@ public class DeptController {
         return deptById;
     }
 
+    /**
+     * 根据id查询备选方案(熔断)
+     * @param id
+     * @return
+     */
     public Dept hystrixGet(@PathVariable("id") Long id){
         return new Dept().setDeptno(id)
                 .setDname("id==>"+id+"不存在该用户，或者信息无法找到~ Null-@HyStrix")

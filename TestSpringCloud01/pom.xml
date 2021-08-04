@@ -40,6 +40,23 @@
 
     <dependencyManagement>
 
+        <!--
+        依赖的版本冲突问题，推荐：
+            1、SpringCloud： Hoxton.SR8
+            2、SpringBoot：2.3.3.RELEASE
+
+        以下版本全为：2.2.5.RELEASE
+            3、服务者：pring-cloud-starter-netflix-eureka-client
+            4、Eureka：spring-cloud-starter-netflix-eureka-server
+            5、消费者+Ribbon：spring-cloud-starter-netflix-eureka-client
+                spring-cloud-starter-netflix-ribbon
+            6、Feign:spring-cloud-starter-openfeign
+            7、Hystrix：spring-cloud-starter-netflix-hystrix
+	            spring-cloud-starter-netflix-hystrix-dashboard
+            8、zuul：spring-cloud-starter-netflix-zuul
+        版本推荐可以看spring cloud官网里面全都有
+        -->
+
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

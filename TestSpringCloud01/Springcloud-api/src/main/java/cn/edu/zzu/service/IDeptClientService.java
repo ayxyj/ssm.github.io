@@ -16,6 +16,7 @@ import java.util.List;
  */
 @Component
 @FeignClient(value = "SPRINGCLOUD-PROVIDER-DEPT",fallbackFactory = DeptClientServiceFallbackFactory.class) //熔断降级
+//fallbackFactory指定降级配置类
 @RequestMapping("/dept")
 public interface IDeptClientService {
     /**
