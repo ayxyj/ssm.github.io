@@ -22,6 +22,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.client.indices.GetIndexRequest;
+import org.elasticsearch.common.text.Text;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.MatchAllQueryBuilder;
@@ -31,6 +32,7 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.fetch.subphase.FetchSourceContext;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +67,7 @@ public class TestES {
             e.printStackTrace();
         }
 
-        System.out.println(createIndexResponse);
+        System.out.println(createIndexResponse.index());
 
     }
 
@@ -90,6 +92,18 @@ public class TestES {
         AcknowledgedResponse delete = client.indices().delete(testdb2, RequestOptions.DEFAULT);
         System.out.println(delete);
     }
+    /**
+     * 文档操作：
+     *      XXXRequest
+     *  RestHighLevelClient.XX()
+     *      index()
+     *      exist()
+     *      get()
+     *      update()
+     *      delete()
+     *      bulk()
+     *      search() //根据条件查询
+     */
 
     /**
      * 测试文档
@@ -97,9 +111,8 @@ public class TestES {
     @Test
     public void addDoc() throws IOException{
 
-
         //创建对象
-        User user = new User("狂神说", 30);
+        User user = new User("扈三娘", 18);
         //创建请求
         IndexRequest indexRequest = new IndexRequest(ESCommon.ES_INDEX.getEs_index());
         //规则： PUT /testdb2/_doc/1
@@ -122,7 +135,7 @@ public class TestES {
     @Test
     public void existDoc() throws IOException {
         GetRequest request = new GetRequest(ESCommon.ES_INDEX.getEs_index(), "1");
-        //不获取返回的_source上下文
+        //不获取返回的_source上下文  不知道啥意思
         request.fetchSourceContext(new FetchSourceContext(false));
         request.storedFields("_none_");
         boolean exists = client.exists(request, RequestOptions.DEFAULT);
@@ -136,6 +149,8 @@ public class TestES {
     public  void  getDoc() throws Exception {
         GetRequest request = new GetRequest(ESCommon.ES_INDEX.getEs_index(), "1");
         GetResponse documentFields = client.get(request, RequestOptions.DEFAULT);
+
+        //map遍历
         Map<String, Object> map = documentFields.getSourceAsMap();
         for (Map.Entry<String, Object> entry : map.entrySet()) {
             String key = entry.getKey();
@@ -143,7 +158,10 @@ public class TestES {
             System.out.println("key："+key + "  value："+ value);
         }
 
+        //对象字符串
         System.out.println(documentFields.getSourceAsString());
+
+        //完整上下文
         System.out.println(documentFields);
     }
     /**
@@ -207,25 +225,70 @@ public class TestES {
     public  void search() throws Exception{
         //查询请求
         SearchRequest searchRequest = new SearchRequest(ESCommon.ES_INDEX.getEs_index());
+
         //构建搜索
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        //分页
+        searchSourceBuilder.from(0);
+        searchSourceBuilder.size(20);
+        searchSourceBuilder.timeout(new TimeValue(60 , TimeUnit.SECONDS));
+
+
 
         //高亮
-        HighlightBuilder highlighter = searchSourceBuilder.highlighter();
+        HighlightBuilder highlighterbuilder = new HighlightBuilder();
+        highlighterbuilder.preTags("<span style='color:red'>");
+        highlighterbuilder.postTags("</span>");
+        highlighterbuilder.field("name");
+        //highlighterbuilder.requireFieldMatch(false);
+        searchSourceBuilder.highlighter(highlighterbuilder);
 
         //查询条件
           //TermQueryBuilder 精确查询 等同于 term
           //MatchAllQueryBuilder 匹配所有
-        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "test");
+        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "java");
         MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
-        searchSourceBuilder.query(matchAllQueryBuilder);
-        searchSourceBuilder.timeout(new TimeValue(60 , TimeUnit.SECONDS));
+        searchSourceBuilder.query(termQueryBuilder);
+
 
         //请求封装搜索条件
         searchRequest.source(searchSourceBuilder);
 
         //请求
         SearchResponse search = client.search(searchRequest, RequestOptions.DEFAULT);
+
+        //打印几个对象看一下啊
+        System.out.println(searchRequest);
+        System.out.println(searchSourceBuilder);
+        System.out.println(highlighterbuilder);
+
+
+        //高亮结果集合
+        ArrayList<Map<String , Object>> users = new ArrayList<>();
+        //高亮结果处理
+        for (SearchHit hit : search.getHits().getHits()) {
+            System.out.println(hit+"=========================");
+            Map<String, HighlightField> highlightFields = hit.getHighlightFields();
+            System.out.println(highlightFields+"-----------------------------------------");
+            HighlightField name = highlightFields.get("name");
+            System.out.println(name);
+            //原来的结果
+            Map<String, Object> sourceAsMap = hit.getSourceAsMap();
+            System.out.println(sourceAsMap+"++++++++++++++++++++++++++++++++++++++++++++");
+            //解析高亮的字段，并将原来的字段替换成高亮字段即可
+            if(name != null){
+                Text[] fragments = name.fragments();
+                String new_name = "";
+                for (Text fragment : fragments) {
+                    new_name += fragment;
+                }
+                System.out.println(new_name);
+                //替换掉原来字段
+                sourceAsMap.put("name",new_name);
+            }
+                users.add(sourceAsMap);
+            System.out.println(users.toString());
+        }
 
         //结果处理
         for (SearchHit hit : search.getHits().getHits()) {
@@ -236,6 +299,5 @@ public class TestES {
                 System.out.println(next.getKey() + "  :  "+ next.getValue());
             }
         }
-
     }
 }
