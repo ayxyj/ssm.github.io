@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: io.github.rui8832:fastdfs-client-java:1.29-20211022">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/github/rui8832/fastdfs-client-java/1.29-20211022/fastdfs-client-java-1.29-20211022.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/io/github/rui8832/fastdfs-client-java/1.29-20211022/fastdfs-client-java-1.29-20211022-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/github/rui8832/fastdfs-client-java/1.29-20211022/fastdfs-client-java-1.29-20211022-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
