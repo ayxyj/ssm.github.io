@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.UUID;
 
 public class TestFastDFS {
-    private static Logger logger = LoggerFactory.getLogger(FileController.class);
+    private static Logger logger = LoggerFactory.getLogger(TestFastDFS.class);
 
     /**
      * 不同次数测试

@@ -1,0 +1,5 @@
+io\ipfs\api\VersionsTest.class
+io\ipfs\api\AddTest.class
+io\ipfs\api\SimpleAddTest.class
+io\ipfs\api\RecursiveAddTest.class
+io\ipfs\api\APITest.class
