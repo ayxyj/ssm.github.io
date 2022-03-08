@@ -1,0 +1,11 @@
+02 ——  Maven测试：传统JDBC
+03 ——  啥也没有
+04 ——  Maven整合：dao - service - web
+              Maven拆分工程：parent：（dao、service、web)
+05 —— 传统JDBC
+06 ——  XML开发Mybatis：接口实现类方式查询（selectList("cn.edu.zzu.dao.IUserDao.findAll")）第二天内容，传统DAO层开发 ；
+              注解开发Mybatis ：简单测试select
+              XML开发Mybatis ：简单测试select
+07 ——  XML开发Mybatis ：CURD
+08 ——  XML开发Mybatis ：多表查询操作
+09 ——  注解开发Mybatis  : CURD 、多表查询、延迟加载、缓存

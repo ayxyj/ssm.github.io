@@ -1,0 +1,3 @@
+cn\edu\zzu\dao\UserInfoDao.class
+cn\edu\zzu\domain\UserInfo.class
+cn\edu\zzu\dao\Impl\UserInfoDaoImpl.class

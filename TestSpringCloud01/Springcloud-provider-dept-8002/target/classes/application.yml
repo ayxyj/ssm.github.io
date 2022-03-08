@@ -1,0 +1,32 @@
+server:
+  port: 8002
+
+#mybatis配置
+mybatis:
+  type-aliases-package: cn.edu.zzu.domain
+  config-location: classpath:SqlMapConfig.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+#spring
+spring:
+  application:
+    name: springcloud-provider-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql:///db02?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+
+#eureka配置
+eureka:
+  client:
+    service-url:
+     defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: springcloud-provider-8002 #修改eureka的默认配置信息
+
+#actuator
+info:
+  app.name: zzu_test_springCloud
+  company.name: zzu_company

@@ -1,0 +1,3 @@
+TestSpringBoot01  —— 入门案例， 继承父工程，web依赖导入，部署插件（找到主启动类）、配置文件（自动配置原理******重要）
+TestSpringBoot02  —— 日志使用 ,  slf4j  和 jcl 门面 桥接 log4j / log4j2  、 logback 之间的切换
+TestSpringBoot03  —— Web开发

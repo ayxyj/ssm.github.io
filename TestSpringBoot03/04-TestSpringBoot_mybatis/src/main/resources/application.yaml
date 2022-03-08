@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/springboot_mybatis?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&
+    driver‐class‐name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    21 poolPreparedStatements: true
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    #初始化数据库脚本
+    schema: classpath:sql/schema.sql
+    #initialization-mode: always #首次启动需要
+    druid:
+      stat-view-servlet:
+        enabled: true
+        allow: #不填写则允许所有
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: 123456
+      web-stat-filter:
+        enabled: true
+# 在使用某一个组件的时候。如果比较常用，通常是先寻找有没有对应的场景启动器，如果有，可以直接使用，减少很多代码量
+# 要使用对应组件需要知道自动配置类的原理，这样才能更好的去优化和使用，不要傻瓜式的使用
+
+
+#mybtais
+mybatis:
+  mapper-locations: classpath:cn/edu/zzu/mapper/*Mapper.xml
+  #config-location: classpath:SqlMapConfig.xml
+  type-aliases-package: cn.edu.zzu.pojo #别名， 等同在全局配置文件中配置typeAlias
+  configuration:
+    map-underscore-to-camel-case: true #下划线命名转驼峰命名 在resultMap中若没有做映射

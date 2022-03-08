@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.edu.zzu</groupId>
+    <artifactId>TestSpringCloud01</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Springcloud-provider-dept-8001</module>
+        <module>Springcloud-api</module>
+        <module>Springcloud-consumer-dept-80</module>
+        <module>Springcloud-Eureka-7001</module>
+        <module>Springcloud-Eureka-7002</module>
+        <module>SpringCloud-Eureka-7003</module>
+        <module>Springcloud-provider-dept-8002</module>
+        <module>Springcloud-provider-dept-8003</module>
+        <module>Springcloud-consumer-dept-feign-80</module>
+        <module>Springcloud-provider-dept-hystrix-8001</module>
+        <module>Springcloud-consumer-dept-hystrix-dashboard-9001</module>
+        <module>Springcloud-zuul-9527</module>
+        <module>Springcloud-config-server-3344</module>
+        <module>Springcloud-config-client-8001</module>
+        <module>Springcloud-config-eureka-7001</module>
+        <module>Springcloud-config-provider-dept-8001</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+        <!--版本管理-->
+        <lombok.version>1.18.20</lombok.version>
+        <junit.version>4.13.2</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <myqsl.version>5.1.48</myqsl.version>
+    </properties>
+
+    <dependencyManagement>
+
+        <!--
+        依赖的版本冲突问题，推荐：
+            1、SpringCloud： Hoxton.SR8
+            2、SpringBoot：2.3.3.RELEASE
+
+        以下版本全为：2.2.5.RELEASE
+            3、服务者：pring-cloud-starter-netflix-eureka-client
+            4、Eureka：spring-cloud-starter-netflix-eureka-server
+            5、消费者+Ribbon：spring-cloud-starter-netflix-eureka-client
+                spring-cloud-starter-netflix-ribbon
+            6、Feign:spring-cloud-starter-openfeign
+            7、Hystrix：spring-cloud-starter-netflix-hystrix
+	            spring-cloud-starter-netflix-hystrix-dashboard
+            8、zuul：spring-cloud-starter-netflix-zuul
+        版本推荐可以看spring cloud官网里面全都有
+        -->
+
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>0.2.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--springCloud的依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Greenwich.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--SpringBoot-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <!--mysql数据库驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${myqsl.version}</version>
+            </dependency>
+            <!--alibaba 数据源-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.2.6</version>
+            </dependency>
+            <!--日志测试~-->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+            <!--log4j-->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!--test 大于4.12-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!--pojo插件getset Lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

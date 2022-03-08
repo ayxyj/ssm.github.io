@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--资源文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--dao层配置文件开始-->
+    <!--数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--配置生产sqlSession对象的工厂-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--数据库连接池-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--扫描pojo包，给包下所有的pojo对象起别名-->
+        <property name="typeAliasesPackage" value="cn.edu.zzu.domain"/>
+    </bean>
+    <!--扫描接口包路径，生成包下所有的接口的代理对象，并放入spring容器中-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sqlsessionfactory-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/><!--两者都可以sqlSessionTemplateBeanName-->
+        <!--要扫描的包-->
+        <property name="basePackage" value="cn.edu.zzu.mapper"/>
+    </bean>
+    <!--dao层配置文件结束-->
+
+
+    <!--service层配置文件开始-->
+    <!--组件扫描-->
+    <context:component-scan base-package="cn.edu.zzu"/>
+
+    <!--声明式事务-->
+    <!--注意:该名称不可以修改，必须是transactionManager ，否则事务通知找不到；若修改在事务通知上指定事务管理器-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--事务通知-->
+    <tx:advice id="advice" transaction-manager="dataSourceTransactionManager">
+        <tx:attributes>
+            <!--尽量走局部扫描-->
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="find*" read-only="true"/>
+            <!--全局扫描尽量避免-->
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--aop切面-->
+    <aop:config>
+        <!--切入点-->
+        <aop:pointcut id="pt1" expression="execution(* cn.edu.zzu.service.impl.*.*(..))"/>
+        <!--切入事务-->
+        <aop:advisor advice-ref="advice" pointcut-ref="pt1"/>
+    </aop:config>
+
+    <!--    注解方式配置切面-->
+    <!--    开启Spring对注解aop的支持-->
+    <aop:aspectj-autoproxy/>
+
+    <!--service层配置文件结束-->
+</beans>

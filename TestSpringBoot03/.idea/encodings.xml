@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/01-TestSpringBoot_web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/02-TestSpringboot_rest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/03-TestSpringBoot_freemarker/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/04-TestSpringBoot_mybatis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/05-TestSpringBoot_Swagger/src/main/java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

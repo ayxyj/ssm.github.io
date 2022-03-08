@@ -1,0 +1,35 @@
+  #1:1
+  #用户和账户信息 AccountUser和account中得user
+  SELECT u.*,a.id AS aid ,a.MONEY  FROM account a ,`user` u WHERE u.id = a.uid;
+  SELECT u.*,a.id AS aid ,a.uid,a.money FROM account a,USER u WHERE a.uid = u.id;
+
+  #1:n
+  #用户到账户映射 user中List<account> accounts
+  SELECT * FROM `user` u
+  LEFT JOIN account a  ON u.id = a.uid;
+
+  SELECT u.* ,a.id AS aid ,a.uid, a.money FROM USER u
+  LEFT JOIN account a  ON u.id = a.uid;
+
+  #m:n
+  #用户到角色映射 user中得List<Role> roles
+  SELECT u.*,r.ID,r.ROLE_NAME,r.ROLE_DESC FROM `user` u
+  LEFT OUTER JOIN user_role ur ON u.id=ur.UID
+  LEFT OUTER JOIN role r ON ur.RID=r.ID
+
+  #角色到用户映射 role中的List<User> users
+  SELECT u.*,r.ID,r.ROLE_NAME,r.ROLE_DESC FROM role r
+  LEFT OUTER JOIN user_role ur ON r.id=ur.rid
+  LEFT OUTER JOIN `user` u ON u.id=ur.uid
+
+  #中间表
+  SELECT * FROM `user` u
+  LEFT OUTER JOIN user_role ur ON u.id=ur.UID
+  LEFT OUTER JOIN role r ON ur.RID=r.ID
+
+  #设置外键约束失效
+  SET FOREIGN_KEY_CHECKS = 0;
+  TRUNCATE `tablename`;
+
+  #IN 操作符允许我们在 WHERE 子句中规定多个值。
+  SELECT * FROM USER WHERE id IN (1,2,3);

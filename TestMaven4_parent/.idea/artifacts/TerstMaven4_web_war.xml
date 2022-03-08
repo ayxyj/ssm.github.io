@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TerstMaven4_web:war">
+    <output-path>$PROJECT_DIR$/TerstMaven4_web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>TerstMaven4_web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="TerstMaven4_web.war">
+      <element id="artifact" artifact-name="TerstMaven4_web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace值必须是接口得全限定名-->
+<mapper namespace="cn.edu.zzu.dao.IUserDao">
+<!-- 配置查询所有用户-->
+<!--创建文件夹cn.edu.zzu.dao应为cn/edu/zzu/dao，不然是一级目录，和java源码下得创建不一样-->
+<!-- id得值要和接口得方法名保持一致-->
+ <select id="findAll" resultType="cn.edu.zzu.domain.User">
+     select * from user
+ </select>
+</mapper>

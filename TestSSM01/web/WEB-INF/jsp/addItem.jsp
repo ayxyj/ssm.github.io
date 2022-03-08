@@ -1,0 +1,51 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: AYXYJ
+  Date: 2021/7/16
+  Time: 20:25
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>addItem</title>
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>项目列表————新增项目</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <form action="${pageContext.request.contextPath}/item/addItem" method="post">
+        <div class="form-group">
+            <label>项目名称:</label>
+            <input type="text" class="form-control" name="name" placeholder="项目名称" required>
+        </div>
+        <div class="form-group">
+            <label>项目价格:</label>
+            <input type="text" class="form-control" name="price" placeholder="价格">
+        </div>
+        <div class="form-group">
+            <label>项目图片:</label>
+            <input type="text" class="form-control" name="pic" placeholder="图片">
+        </div>
+        <div class="form-group">
+            <label>创建时间:</label>
+            <input type="date" class="form-control" name="createtime" placeholder="创建时间">
+        </div>
+        <div class="form-group">
+            <label>项目其他:</label>
+            <input type="text" class="form-control" name="detail" placeholder="详情">
+        </div>
+        <button type="submit" class="btn btn-info">添加</button>
+    </form>
+</div>
+</body>
+</html>

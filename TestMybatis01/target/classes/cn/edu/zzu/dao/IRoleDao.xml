@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zzu.dao.IRoleDao">
+    <select id="findRolesAndUsers" resultMap="rolesAndusers" >
+        <!--#查询角色id，用id在去查询用户信息   role->user_role->user-->
+        SELECT u.*,r.ID AS rid,r.ROLE_NAME as rn,r.ROLE_DESC as rd FROM role r
+        LEFT OUTER JOIN user_role ur ON r.id=ur.rid
+        LEFT OUTER JOIN `user` u ON u.id=ur.uid
+    </select>
+    <resultMap id="rolesAndusers" type="role">
+        <id property="id" column="rid"/>
+        <result property="roleName" column="rn"/>
+        <result property="roleDesc" column="rd"/>
+        <!--property  集合名称， oftype 元素类型-->
+        <collection property="users"  ofType="user">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="birthday" column="birthday"/>
+            <result property="sex" column="sex"/>
+            <result property="address" column="address"/>
+        </collection>
+    </resultMap>
+</mapper>

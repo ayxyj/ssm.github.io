@@ -1,0 +1,19 @@
+server:
+  port: 7003
+
+#eureka
+eureka:
+  instance:
+    hostname: eureka7003.com
+  client:
+    register-with-eureka: false #表示是否想eureka注册中心注册自己
+    fetch-registry:  false # fetch-registry = false表示自己为注册中心
+    #监控页面
+    service-url:
+      #集群
+      defaultZone:  http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+      #单机
+      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ #this.serviceUrl.put("defaultZone", "http://localhost:8761/eureka/");
+  server:
+    enable-self-preservation: false #禁止自我保护机制，不推荐！
+

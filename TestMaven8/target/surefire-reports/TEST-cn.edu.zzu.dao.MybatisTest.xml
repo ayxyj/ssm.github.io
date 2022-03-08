@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="1" failures="0" name="cn.edu.zzu.dao.MybatisTest" time="0.246" errors="1" skipped="0">
+  <properties>
+    <property name="idea.version" value="2020.3.3"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\Java\jdk1.8.0_102\jre\bin"/>
+    <property name="java.vm.version" value="25.102-b14"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\Java\idea\TestMaven8"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\Java\idea\TestMaven8"/>
+    <property name="java.runtime.version" value="1.8.0_102-b14"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="D:\Java\jdk1.8.0_102\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\AYXYJ\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="maven.ext.class.path" value="E:\idea\IntelliJ IDEA 2020.3.3\plugins\maven\lib\maven-event-listener.jar"/>
+    <property name="classworlds.conf" value="E:\idea\IntelliJ IDEA 2020.3.3\plugins\maven\lib\maven3\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\Java\jdk1.8.0_102\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;D:\Program Files\vm\bin\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\MySQL\MySQL Server 5.5\bin;D:\Program Files\nodejs\;D:\Program Files\Git\cmd;D:\Program Files\Geth;F:\rmj\go\bin;D:\Python\Scripts\;D:\Python\;C:\Users\AYXYJ\AppData\Local\Microsoft\WindowsApps;D:\Java\jdk1.8.0_102\bin;.;D:\Java\jdk1.8.0_102\lib\dt.jar;D:\Java\jdk1.8.0_102\lib\tools.jar;D:\Go\go\bin;D:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\AYXYJ\AppData\Roaming\npm;D:\Program Files (x86)\IPFS\IPFS Desktop\resources\app.asar.unpacked\src\ipfs-on-path\scripts\bin-win;E:\software\GoLand 2020.2.3\bin;;F:\Program Files (x86)\PyCharm Community Edition 2020.3\bin;;C:\Users\AYXYJ\go\bin;D:\Go\GoProject\bin;E:\gradle-6.0.1\bin;E:\Redis;E:\mingw64\bin;E:\maven\apache-maven-3.6.0\bin;;."/>
+    <property name="maven.conf" value="E:\idea\IntelliJ IDEA 2020.3.3\plugins\maven\lib\maven3/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\AYXYJ"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="AYXYJ"/>
+    <property name="java.class.path" value="E:\idea\IntelliJ IDEA 2020.3.3\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;E:\idea\IntelliJ IDEA 2020.3.3\plugins\maven\lib\maven3\boot\plexus-classworlds.license;E:\idea\IntelliJ IDEA 2020.3.3\lib\idea_rt.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\Java\jdk1.8.0_102\jre"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2020.3.3 test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_102"/>
+    <property name="java.ext.dirs" value="D:\Java\jdk1.8.0_102\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\Java\jdk1.8.0_102\jre\lib\resources.jar;D:\Java\jdk1.8.0_102\jre\lib\rt.jar;D:\Java\jdk1.8.0_102\jre\lib\sunrsasign.jar;D:\Java\jdk1.8.0_102\jre\lib\jsse.jar;D:\Java\jdk1.8.0_102\jre\lib\jce.jar;D:\Java\jdk1.8.0_102\jre\lib\charsets.jar;D:\Java\jdk1.8.0_102\jre\lib\jfr.jar;D:\Java\jdk1.8.0_102\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="E:\idea\IntelliJ IDEA 2020.3.3\plugins\maven\lib\maven3"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="cn.edu.zzu.dao.MybatisTest" name="testFindALl" time="0.246">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at cn.edu.zzu.dao.MybatisTest.destory(MybatisTest.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</error>
+    <system-out>2021-04-18 20:22:27,427 0      [           main] DEBUG ache.ibatis.logging.LogFactory  - Logging initialized using &apos;class org.apache.ibatis.logging.log4j.Log4jImpl&apos; adapter.
+2021-04-18 20:22:27,481 54     [           main] DEBUG       org.apache.ibatis.io.VFS  - Class not found: org.jboss.vfs.VFS
+2021-04-18 20:22:27,481 54     [           main] DEBUG org.apache.ibatis.io.JBoss6VFS  - JBoss 6 VFS API is not available in this environment.
+2021-04-18 20:22:27,482 55     [           main] DEBUG       org.apache.ibatis.io.VFS  - Class not found: org.jboss.vfs.VirtualFile
+2021-04-18 20:22:27,482 55     [           main] DEBUG       org.apache.ibatis.io.VFS  - VFS implementation org.apache.ibatis.io.JBoss6VFS is not valid in this environment.
+2021-04-18 20:22:27,482 55     [           main] DEBUG       org.apache.ibatis.io.VFS  - Using VFS adapter org.apache.ibatis.io.DefaultVFS
+2021-04-18 20:22:27,483 56     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/domain
+2021-04-18 20:22:27,483 56     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/domain
+2021-04-18 20:22:27,505 78     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: Account.class
+2021-04-18 20:22:27,506 79     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: User.class
+2021-04-18 20:22:27,506 79     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Listing file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/domain
+2021-04-18 20:22:27,506 79     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/domain/Account.class
+2021-04-18 20:22:27,506 79     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/domain/Account.class
+2021-04-18 20:22:27,507 80     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: ����&amp;#0;&amp;#0;&amp;#0;4&amp;#0;&lt;
+2021-04-18 20:22:27,507 80     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/domain/User.class
+2021-04-18 20:22:27,507 80     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/domain/User.class
+2021-04-18 20:22:27,508 81     [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: ����&amp;#0;&amp;#0;&amp;#0;4&amp;#0;L
+2021-04-18 20:22:27,508 81     [           main] DEBUG .apache.ibatis.io.ResolverUtil  - Checking to see if class cn.edu.zzu.domain.Account matches criteria [is assignable to Object]
+2021-04-18 20:22:27,509 82     [           main] DEBUG .apache.ibatis.io.ResolverUtil  - Checking to see if class cn.edu.zzu.domain.User matches criteria [is assignable to Object]
+2021-04-18 20:22:27,530 103    [           main] DEBUG source.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections.
+2021-04-18 20:22:27,530 103    [           main] DEBUG source.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections.
+2021-04-18 20:22:27,531 104    [           main] DEBUG source.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections.
+2021-04-18 20:22:27,531 104    [           main] DEBUG source.pooled.PooledDataSource  - PooledDataSource forcefully closed/removed all connections.
+2021-04-18 20:22:27,532 105    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/test-classes/cn/edu/zzu/dao
+2021-04-18 20:22:27,532 105    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/test-classes/cn/edu/zzu/dao
+2021-04-18 20:22:27,533 106    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: MybatisTest.class
+2021-04-18 20:22:27,533 106    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Listing file:/D:/Java/idea/TestMaven8/target/test-classes/cn/edu/zzu/dao
+2021-04-18 20:22:27,533 106    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/test-classes/cn/edu/zzu/dao/MybatisTest.class
+2021-04-18 20:22:27,533 106    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/test-classes/cn/edu/zzu/dao/MybatisTest.class
+2021-04-18 20:22:27,534 107    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: ����&amp;#0;&amp;#0;&amp;#0;4&amp;#0;z
+2021-04-18 20:22:27,534 107    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao
+2021-04-18 20:22:27,534 107    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao
+2021-04-18 20:22:27,535 108    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: IAccountDao.class
+2021-04-18 20:22:27,535 108    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: IAccountDao.xml
+2021-04-18 20:22:27,535 108    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: IUserDao.class
+2021-04-18 20:22:27,536 109    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: IUserDao.xml
+2021-04-18 20:22:27,536 109    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Listing file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao
+2021-04-18 20:22:27,536 109    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IAccountDao.class
+2021-04-18 20:22:27,536 109    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IAccountDao.class
+2021-04-18 20:22:27,536 109    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: ����&amp;#0;&amp;#0;&amp;#0;4&amp;#0;&amp;#11;&amp;#7;&amp;#0;	&amp;#7;&amp;#0;
+2021-04-18 20:22:27,537 110    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IAccountDao.xml
+2021-04-18 20:22:27,537 110    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IAccountDao.xml
+2021-04-18 20:22:27,537 110    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+2021-04-18 20:22:27,537 110    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IUserDao.class
+2021-04-18 20:22:27,537 110    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IUserDao.class
+2021-04-18 20:22:27,538 111    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: ����&amp;#0;&amp;#0;&amp;#0;4&amp;#0;&amp;#11;&amp;#7;&amp;#0;	&amp;#7;&amp;#0;
+2021-04-18 20:22:27,538 111    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Find JAR URL: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IUserDao.xml
+2021-04-18 20:22:27,538 111    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Not a JAR: file:/D:/Java/idea/TestMaven8/target/classes/cn/edu/zzu/dao/IUserDao.xml
+2021-04-18 20:22:27,539 112    [           main] DEBUG rg.apache.ibatis.io.DefaultVFS  - Reader entry: &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+2021-04-18 20:22:27,539 112    [           main] DEBUG .apache.ibatis.io.ResolverUtil  - Checking to see if class cn.edu.zzu.dao.MybatisTest matches criteria [is assignable to Object]
+2021-04-18 20:22:27,539 112    [           main] DEBUG .apache.ibatis.io.ResolverUtil  - Checking to see if class cn.edu.zzu.dao.IAccountDao matches criteria [is assignable to Object]
+2021-04-18 20:22:27,540 113    [           main] DEBUG .apache.ibatis.io.ResolverUtil  - Checking to see if class cn.edu.zzu.dao.IUserDao matches criteria [is assignable to Object]
+</system-out>
+  </testcase>
+</testsuite>

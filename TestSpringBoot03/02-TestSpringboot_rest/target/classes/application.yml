@@ -1,0 +1,20 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /order
+spring:
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .html
+    #locale: zh_CN
+  # 国际化
+  messages:
+    basename: i18n.message
+#  web:
+#    resources:
+#      static-locations: classpath:/static/
+
+debug: true #自动配置类查看  默认false
+
+

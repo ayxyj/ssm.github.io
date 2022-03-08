@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--    包扫描
+    问题：当配置注解包扫描的时候，在切入点表达式的书写时候，不能直接用通配符，会出现通知方法重复执行一次
+    解决：
+        1.配置到具体的service包下，也是常规的操作
+        2.不用注解扫描，用xml的方式配置IOC
+    -->
+        <context:component-scan base-package="cn.edu.zzu"/>
+    <!--spring中基于XML的AOP配置步骤
+           1、把通知Bean也交给spring来管理
+           2、使用aop:config标签表明开始AOP的配置
+           3、使用aop:aspect标签表明配置切面
+                   id属性：是给切面提供一个唯一标识
+                   ref属性：是指定通知类bean的Id。
+           4、在aop:aspect标签的内部使用对应标签来配置通知的类型
+                  我们现在示例是让printLog方法在切入点方法执行之前之前：所以是前置通知
+                  aop:before：表示配置前置通知
+                       method属性：用于指定Logger类中哪个方法是前置通知
+                       pointcut属性：用于指定切入点表达式，该表达式的含义指的是对业务层中哪些方法增强
+
+               切入点表达式的写法：
+                   关键字：execution(表达式)
+                   表达式：
+                       访问修饰符  返回值  包名.包名.包名...类名.方法名(参数列表)
+                   标准的表达式写法：
+                       public void cn.edu.zzu.service.impl.AccountServiceImpl.saveAccount()
+                   访问修饰符可以省略
+                       void cn.edu.zzu.service.impl.AccountServiceImpl.saveAccount()
+                   返回值可以使用通配符，表示任意返回值
+                       * cn.edu.zzu.service.impl.AccountServiceImpl.saveAccount()
+                   包名可以使用通配符，表示任意包。但是有几级包，就需要写几个*.
+                       * *.*.*.*.AccountServiceImpl.saveAccount())
+                   包名可以使用..表示当前包及其子包
+                       * *..AccountServiceImpl.saveAccount()
+                   类名和方法名都可以使用*来实现通配
+                       * *..*.*()
+                   参数列表：
+                       可以直接写数据类型：
+                           基本类型直接写名称           int
+                           引用类型写包名.类名的方式   java.lang.String
+                       可以使用通配符表示任意类型，但是必须有参数
+                       可以使用..表示有无参数均可，有参数可以是任意类型
+                   全通配写法：
+                       * *..*.*(..)
+
+                   实际开发中切入点表达式的通常写法：
+                       切到业务层实现类下的所有方法
+                           * cn.edu.zzu.service.impl.*.*(..)
+       -->
+
+<!--    <bean id="accountService" class="cn.edu.zzu.service.impl.AccountServiceImpl"/>-->
+<!--    <bean id="logger" class="cn.edu.zzu.utils.Logger"/>-->
+
+            <!--配置aop-->
+<!--            <aop:config>-->
+<!--                &lt;!&ndash;配置切入点&ndash;&gt;-->
+<!--                <aop:pointcut id="pc1" expression="execution(* cn.edu.zzu.service.impl.*.*(..))"/>-->
+<!--                <aop:pointcut id="pc2" expression="execution(* *..*.*(..))"/>-->
+<!--                &lt;!&ndash;配置切面&ndash;&gt;-->
+<!--                <aop:aspect id="logAdvice" ref="logger">-->
+<!--        &lt;!&ndash;            前置通知&ndash;&gt;-->
+<!--                    <aop:before method="beforePrintLog" pointcut-ref="pc2"/>-->
+<!--        &lt;!&ndash;            后置通知&ndash;&gt;-->
+<!--                    <aop:after-returning method="afterReturningPrintLog" pointcut-ref="pc2"/>-->
+<!--        &lt;!&ndash;            异常通知&ndash;&gt;-->
+<!--                    <aop:after-throwing method="afterThrowingPrintLog" pointcut-ref="pc2"/>-->
+<!--        &lt;!&ndash;            最终通知&ndash;&gt;-->
+<!--                    <aop:after method="afterPrintLog" pointcut-ref="pc2"/>-->
+<!--                </aop:aspect>-->
+<!--            </aop:config>-->
+
+    <!--配置环绕通知-->
+    <aop:config>
+        <!--        配置切入点-->
+        <aop:pointcut id="pc3" expression="execution(* cn.edu.zzu.service.*.*(..))"/>
+        <!--配置切面-->
+        <aop:aspect id="printLog" ref="logger">
+            <aop:around method="aroundPringLog" pointcut-ref="pc3"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

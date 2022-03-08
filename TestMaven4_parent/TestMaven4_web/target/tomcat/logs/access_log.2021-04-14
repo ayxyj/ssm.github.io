@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:12:59:48 +0800] "GET /TestMaven4_web HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:12:59:49 +0800] "GET /TestMaven4_web/ HTTP/1.1" 200 52 http-bio-8080-exec-3 310
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:13:00:02 +0800] "GET /TestMaven4_web/items/findDetail HTTP/1.1" 200 646 http-bio-8080-exec-4 404
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:16:47:19 +0800] "GET /TestMaven4_web HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:16:47:19 +0800] "GET /TestMaven4_web/ HTTP/1.1" 200 52 http-bio-8080-exec-3 31
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:16:47:24 +0800] "GET /TestMaven4_web//items/findDetail HTTP/1.1" 200 646 http-bio-8080-exec-4 298
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:16:49:21 +0800] "GET /TestMaven4_web//items/findDetail HTTP/1.1" 200 646 http-bio-8080-exec-1 350
+0:0:0:0:0:0:0:1 - - [14/Apr/2021:16:49:21 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
